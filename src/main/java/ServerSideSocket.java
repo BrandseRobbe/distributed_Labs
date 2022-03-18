@@ -1,4 +1,4 @@
-package src.main.java;// Server Side
+package main.java;// Server Side
 import java.net.*;
 import java.io.*;
 
@@ -7,11 +7,18 @@ public class ServerSideSocket {
         try {
             int serverPort = 4020;
             ServerSocket serverSocket = new ServerSocket(serverPort);
+            Socket server = serverSocket.accept();
             serverSocket.setSoTimeout(10000);
+            FileInputStream fileInputStream = new FileInputStream("C:\\Users\\seppe\\Desktop\\examentelecom.txt");
+            byte b[] = new byte[2000000];  // needs to be bigger than filesize
+            fileInputStream.read(b, 0, b.length);
+            OutputStream os = server.getOutputStream();
+            os.write(b, 0, b.length);
+
             while(true) {
                 System.out.println("Waiting for client on port " + serverSocket.getLocalPort() + "...");
 
-                Socket server = serverSocket.accept();
+//                Socket server = serverSocket.accept();
                 System.out.println("Just connected to " + server.getRemoteSocketAddress());
 
                 PrintWriter toClient =
