@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class ClientSocket {
+public class TCPClient {
     public void run() {
 
         PrintWriter out = null;
@@ -56,7 +56,7 @@ public class ClientSocket {
     }
 
     public static void main(String[] args) {
-        ClientSocket client = new ClientSocket();
+        TCPClient client = new TCPClient();
         client.run();
     }
 }

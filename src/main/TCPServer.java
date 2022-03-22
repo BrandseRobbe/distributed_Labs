@@ -3,7 +3,7 @@ package main;
 import java.net.*;
 import java.io.*;
 
-public class ServerSideSocket {
+public class TCPServer {
     public void run() {
         try {
 
@@ -21,7 +21,7 @@ public class ServerSideSocket {
                 System.out.println("New client connected: " + client.getInetAddress().getHostAddress());
 
                 // create a new thread object
-                ClientHandler clientSock = new ClientHandler(client);
+                TCPClientHandler clientSock = new TCPClientHandler(client);
 
                 // This thread will handle the client separately
                 new Thread(clientSock).start();
@@ -36,7 +36,7 @@ public class ServerSideSocket {
     }
 
     public static void main(String[] args) {
-        ServerSideSocket srv = new ServerSideSocket();
-        srv.run();
+        TCPServer server = new TCPServer();
+        server.run();
     }
 }

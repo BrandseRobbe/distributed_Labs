@@ -4,11 +4,11 @@ import java.io.*;
 import java.net.*;
 
 // ClientHandler class
-public class ClientHandler implements Runnable {
+public class TCPClientHandler implements Runnable {
     private final Socket clientSocket;
 
     // Constructor
-    public ClientHandler(Socket socket)
+    public TCPClientHandler(Socket socket)
     {
         this.clientSocket = socket;
     }
@@ -21,7 +21,7 @@ public class ClientHandler implements Runnable {
 
             // Setup file to share
             byte b[] = new byte[2000];  // needs to be bigger than filesize
-            FileInputStream fileInputStream = new FileInputStream("C:\\DistributedSystems\\Test.txt");
+            FileInputStream fileInputStream = new FileInputStream("D:\\Send.txt");
             fileInputStream.read(b, 0, b.length);
 
             // Write the file to the output stream
